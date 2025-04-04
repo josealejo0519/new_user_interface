@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">New User Interface</string>
+    <string name="email">email</string>
+    <string name="log_in">Log In</string>
+    <string name="password">Password</string>
+    <string name="sing_in">Sing In</string>
+    <string name="don_t_have_an_acount">Don\'t have an acount?</string>
+    <string name="sing_up">Sing Up</string>
+    <string name="men">Menú</string>
+    <string name="create">Create</string>
+    <string name="update">Update</string>
+    <string name="user_registration">User Registration</string>
+    <string name="name">Name</string>
+    <string name="e_mail">\@e-mail</string>
+    <string name="password_must_n_be_at_least_6_characters_n_include_a_number_n_include_a_special_character">Password must:\n• Be at least 6 characters\n• Include a number\n• Include a special character</string>
+    <string name="last_name">Last Name</string>
+    <string name="read">Read</string>
+    <string name="delete">Delete</string>
+    <string name="user">User</string>
+    <string name="search">Search</string>
+    <string name="categoria">Categoria</string>
+    <string name="categor_a_adicional">Categoría adicional</string>
+    <string name="resumen_de_la_categor_a">Resumen de la categoría...</string>
+    <string name="tipo_de_categor_a">Tipo de Categoría</string>
+    <string name="nombre_categor_a">Nombre Categoría</string>
+</resources>
