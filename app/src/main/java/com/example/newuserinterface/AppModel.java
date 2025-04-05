@@ -8,7 +8,7 @@ public class AppModel {
     private String category;
     private String title;
 
-    // Constructor básico (para layouts con imagen, nombre, derechos, resumen)
+    // Constructor básico
     public AppModel(int image, String name, String rights, String summary) {
         this.image = image;
         this.name = name;
@@ -56,7 +56,6 @@ public class AppModel {
         return title;
     }
 
-    // Setters opcionales (por si necesitas modificar luego)
     public void setImage(int image) {
         this.image = image;
     }

@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 
             Intent intent = new Intent(SplashActivity.this, isLoggedIn ? MainActivity.class : LogInActivity.class);
             startActivity(intent);
-            finish(); // Evita que el usuario regrese al splash con el botón "atrás"
+            finish();
         }, TIEMPO_CARGA);
     }
 }

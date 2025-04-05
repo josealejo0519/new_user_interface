@@ -13,7 +13,7 @@ public class User extends SugarRecord<User> {
     public User() {
     }
 
-    // Constructor correcto para crear un usuario
+    // Constructor para crear un usuario
     public User(String name, String lastname, String email, String password) {
         this.name = name;
         this.lastname = lastname;

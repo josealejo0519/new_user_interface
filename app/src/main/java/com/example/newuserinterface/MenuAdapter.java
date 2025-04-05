@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class MenuAdapter extends ArrayAdapter<AppModel> {
@@ -30,8 +32,9 @@ public class MenuAdapter extends ArrayAdapter<AppModel> {
         TextView textTitle;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         AppModel model = getItem(position);
         ViewHolder holder;
 
@@ -45,6 +48,7 @@ public class MenuAdapter extends ArrayAdapter<AppModel> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        assert model != null;
         holder.image.setImageResource(model.getImage());
         holder.textTitle.setText(model.getName());
 

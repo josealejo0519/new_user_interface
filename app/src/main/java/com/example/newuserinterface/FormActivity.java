@@ -1,13 +1,10 @@
 package com.example.newuserinterface;
 
-import static com.example.newuserinterface.R.id.btnCreate;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,10 +17,9 @@ import java.util.List;
 
 public class FormActivity extends AppCompatActivity {
     private EditText name, lastname, email, password, readData;
-    private TextView txtPasswordRequirements;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_form);
@@ -32,7 +28,6 @@ public class FormActivity extends AppCompatActivity {
         lastname = findViewById(R.id.txtLastName);
         email = findViewById(R.id.txtEmail);
         password = findViewById(R.id.txtPassword);
-        txtPasswordRequirements = findViewById(R.id.txtPasswordRequirements);
         Button btnCreate = findViewById(R.id.btnCreate);
         Button btnUpdate = findViewById(R.id.btnUpdate);
         Button btnDelete = findViewById(R.id.btnDelete);

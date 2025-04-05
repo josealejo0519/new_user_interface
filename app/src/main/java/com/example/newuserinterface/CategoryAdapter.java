@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class CategoryAdapter extends ArrayAdapter<AppModel> {
@@ -29,8 +31,9 @@ public class CategoryAdapter extends ArrayAdapter<AppModel> {
         TextView textSummary;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         AppModel model = getItem(position);
         ViewHolder holder;
 
@@ -45,7 +48,7 @@ public class CategoryAdapter extends ArrayAdapter<AppModel> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.textCategory.setText(model.getRights()); // usamos "rights" como categoría
+        holder.textCategory.setText(model.getCategory());
         holder.textName.setText(model.getName());
         holder.textSummary.setText(model.getSummary());
 

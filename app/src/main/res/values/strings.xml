@@ -23,4 +23,8 @@
     <string name="resumen_de_la_categor_a">Resumen de la categoría...</string>
     <string name="tipo_de_categor_a">Tipo de Categoría</string>
     <string name="nombre_categor_a">Nombre Categoría</string>
+    <string name="descripci_n_breve_de_la_app">Descripción breve de la app...</string>
+    <string name="categor_a">Categoría</string>
+    <string name="nombre_app">Nombre App</string>
+    <string name="t_tulo_del_men">Título del Menú</string>
 </resources>

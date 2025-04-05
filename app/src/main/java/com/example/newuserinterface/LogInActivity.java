@@ -15,7 +15,6 @@ import java.util.List;
 public class LogInActivity extends AppCompatActivity {
 
     private EditText username, password;
-    private Button btnSingIn, btnSingUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,22 +23,14 @@ public class LogInActivity extends AppCompatActivity {
 
         username = findViewById(R.id.usernameEdT);
         password = findViewById(R.id.passwordEdT);
-        btnSingIn = findViewById(R.id.btnSingIn);
-        btnSingUp = findViewById(R.id.btnSingUp);
+        Button btnSingIn = findViewById(R.id.btnSingIn);
+        Button btnSingUp = findViewById(R.id.btnSingUp);
 
-        btnSingIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                processLoginData();
-            }
-        });
+        btnSingIn.setOnClickListener(v -> processLoginData());
 
-        btnSingUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LogInActivity.this, FormActivity.class);
-                startActivity(intent);
-            }
+        btnSingUp.setOnClickListener(v -> {
+            Intent intent = new Intent(LogInActivity.this, FormActivity.class);
+            startActivity(intent);
         });
     }
 

@@ -7,10 +7,11 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
+        android:alpha="0.4"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ducat"
-        android:alpha="0.4" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/ducat" />
+
 
     <!-- Tu tarjeta original intacta -->
     <RelativeLayout
@@ -31,14 +32,13 @@
             android:src="@drawable/fondo22"
             android:contentDescription="@string/app_name" />
 
-        <!-- Título o Nombre App -->
         <TextView
             android:id="@+id/textName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/image"
             android:layout_marginStart="12dp"
-            android:text="Nombre App"
+            android:text="@string/nombre_app"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@color/colorPrimaryDark" />
@@ -47,11 +47,11 @@
         <TextView
             android:id="@+id/textRights"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_below="@id/textName"
             android:layout_alignStart="@id/textName"
             android:layout_marginTop="4dp"
-            android:text="Categoría"
+            android:text="@string/categor_a"
             android:textSize="14sp"
             android:textColor="@color/gray" />
 
@@ -63,7 +63,7 @@
             android:layout_below="@id/textRights"
             android:layout_alignStart="@id/textName"
             android:layout_marginTop="4dp"
-            android:text="Descripción breve de la app..."
+            android:text="@string/descripci_n_breve_de_la_app"
             android:textSize="12sp"
             android:textColor="@android:color/black"
             android:maxLines="3"

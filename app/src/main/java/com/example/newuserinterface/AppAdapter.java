@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class AppAdapter extends ArrayAdapter<AppModel> {
         super(context, 0, getData());
     }
 
-    // Generar lista de ejemplo (puedes reemplazar con API o DB)
+    // Generar lista (se puede reemplazar con API o DB)
     private static ArrayList<AppModel> getData() {
         ArrayList<AppModel> list = new ArrayList<>();
         list.add(new AppModel(R.drawable.fondo22, "Ducati Adventure", "Enduro", "Explora nuevos caminos con esta bestia del off-road."));
@@ -34,8 +36,9 @@ public class AppAdapter extends ArrayAdapter<AppModel> {
         TextView textSummary;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         AppModel app = getItem(position);
         ViewHolder holder;
 
@@ -52,6 +55,7 @@ public class AppAdapter extends ArrayAdapter<AppModel> {
         }
 
         // Asignar datos
+        assert app != null;
         holder.image.setImageResource(app.getImage());
         holder.textName.setText(app.getName());
         holder.textRights.setText(app.getRights());

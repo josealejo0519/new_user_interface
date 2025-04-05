@@ -31,9 +31,9 @@ public class MenuActivity extends AppCompatActivity {
                 apps.add(new AppModel("Turismo", "Viajes en Ruta", "Planea viajes con tu moto"));
                 apps.add(new AppModel("Servicio", "Mantenimiento", "Controla revisiones y gastos"));
 
-                adapter = new AppAdapter(this, apps); // ✅ Pasa la lista correctamente
+                adapter = new AppAdapter(this, apps);
             } else if ("categorias".equals(value)) {
-                adapter = new CategoryAdapter(this); // asegúrate de que este adaptador esté bien configurado también
+                adapter = new CategoryAdapter(this);
             } else {
                 adapter = new MenuAdapter(this);
             }
