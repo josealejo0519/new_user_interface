@@ -1,43 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@drawable/fondo22"
-    android:gravity="center"
-    >
+    android:background="@drawable/parqueadero1"
+    android:alpha="0.9"
+    android:padding="30dp"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnApps"
+    <!-- Encabezado -->
+    <RelativeLayout
+        android:id="@+id/headerBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Motorcycles"
-        android:backgroundTint="@color/green"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp">
 
-    <Button
-        android:id="@+id/btnCategorias"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logoImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="4dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/parking21"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/app_logo"
+            app:shapeAppearanceOverlay="@style/CircularImageViewStyle" />
+
+
+        <TextView
+            android:id="@+id/txtTituloApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/logoImage"
+            android:layout_marginStart="8dp"
+            android:layout_centerVertical="true"
+            android:text="@string/autos_colombia"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:text="@string/salir"
+            android:backgroundTint="@color/blue3"
+            android:textColor="@android:color/white"
+            app:cornerRadius="10dp" />
+
+        <Button
+            android:id="@+id/btnReporte"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_toStartOf="@id/btnLogout"
+            android:layout_marginEnd="8dp"
+            android:text="@string/reportes"
+            android:backgroundTint="@color/blue3"
+            android:textColor="@android:color/white"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/txtInfoUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/btnReporte"
+            android:layout_marginEnd="8dp"
+            android:layout_centerVertical="true"
+            android:text="admin@correo.com | Administrador"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- RecyclerView para mostrar ingresos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewIngresos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Category"
+        android:layout_height="0dp"
+        android:layout_below="@id/headerBar"
+        android:layout_above="@id/linearBotones"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/green"/>
+        android:layout_marginBottom="16dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        android:contentDescription="Listado de vehículos registrados"
+        tools:listitem="@layout/item_app" />
 
-    <Button
-        android:id="@+id/btnMenu"
+    <!-- Botones inferiores -->
+    <LinearLayout
+        android:id="@+id/linearBotones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Menú Principal"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/green"/>
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="5"
+        android:layout_marginBottom="8dp">
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/green"
-        android:text="Cerrar Sesión" />
+        <Button
+            android:id="@+id/btnEntrada"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/entrada"
+            android:backgroundTint="@color/blue3"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:textColor="@android:color/white"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/btnSalida"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/salida"
+            android:backgroundTint="@color/blue3"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:textColor="@android:color/white"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/btnCelda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/celda"
+            android:backgroundTint="@color/blue3"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:textColor="@android:color/white"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/btnPago"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/pagos"
+            android:backgroundTint="@color/blue3"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:textColor="@android:color/white"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/btnObs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/observaciones"
+            android:backgroundTint="@color/blue3"
+            android:layout_marginStart="4dp"
+            android:textColor="@android:color/white"
+            app:cornerRadius="10dp"/>
+    </LinearLayout>
+</RelativeLayout>
 
 
-</LinearLayout>
+
+

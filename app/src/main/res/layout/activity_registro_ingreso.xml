@@ -62,19 +62,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/user_registration"
+                    android:text="Nuevo Ingreso"
                     android:textAlignment="center"
                     android:textColor="@color/blue3"
                     android:textSize="28sp"
                     android:textStyle="bold" />
 
-                <!-- Nombre -->
+                <!-- Placa -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/name"
+                    android:text="Placa"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -90,31 +90,31 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
                         android:contentDescription="user"
-                        android:src="@drawable/personq" />
+                        android:src="@drawable/placa" />
 
                     <EditText
-                        android:id="@+id/txtName"
+                        android:id="@+id/edtPlaca"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="@string/name"
+                        android:hint="Numero"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/cardview_dark_background" />
                 </LinearLayout>
 
-                <!-- Apellido -->
+                <!-- Tipo -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/last_name"
+                    android:text="Tipo Vehículo"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -130,31 +130,31 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="last name"
-                        android:src="@drawable/personq" />
+                        android:layout_width="43dp"
+                        android:layout_height="32dp"
+                        android:contentDescription="tipo"
+                        android:src="@drawable/tipo" />
 
                     <EditText
-                        android:id="@+id/txtLastName"
+                        android:id="@+id/edtTipoVehiculo"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="@string/last_name"
+                        android:hint="Moto Automovil Camión"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/cardview_dark_background" />
                 </LinearLayout>
 
-                <!-- Email -->
+                <!-- Fecha y Hora de Ingreso -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/e_mail"
+                    android:text="Fecha y Hora de Ingreso"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -170,31 +170,31 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="33dp"
-                        android:contentDescription="email"
-                        android:src="@drawable/personal_mail" />
+                        android:layout_width="33dp"
+                        android:layout_height="31dp"
+                        android:src="@drawable/fecha" />
 
                     <EditText
-                        android:id="@+id/txtEmail"
+                        android:id="@+id/edtFechaIng"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="@string/e_mail"
-                        android:inputType="textEmailAddress"
+                        android:hint="12-05-2025 15:30"
+                        android:inputType="text"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/cardview_dark_background" />
+                        android:textColorHint="@color/cardview_dark_background"
+                        android:enabled="false" />
                 </LinearLayout>
 
-                <!-- Contraseña -->
+                <!-- Celda -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="Password"
+                    android:text="Celda Asignada"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -210,88 +210,28 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:contentDescription="password"
-                        android:src="@drawable/password_2_svgrepo_com" />
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:contentDescription="celda"
+                        android:src="@drawable/celda" />
 
                     <EditText
-                        android:id="@+id/txtPassword"
+                        android:id="@+id/edtCelda"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="@string/pass"
-                        android:inputType="textPassword"
+                        android:hint="###"
+                        android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/cardview_dark_background"
                         tools:ignore="Autofill" />
                 </LinearLayout>
 
-                <!-- Requisitos contraseña -->
-                <TextView
-                    android:id="@+id/txtPasswordRequirements"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:text="@string/password_must_n_be_at_least_6_characters_n_include_a_number_n_include_a_special_character"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
-
-                <!-- Buscar usuario -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="45dp"
-                        android:layout_weight="2"
-                        android:background="@drawable/custon_edit_text"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="user icon"
-                            android:src="@drawable/personq" />
-
-                        <EditText
-                            android:id="@+id/txtSearchUser"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent"
-                            android:hint="@string/user"
-                            android:inputType="text"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/cardview_dark_background" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnRead"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/blue3"
-                        android:text="@string/search"
-                        android:textSize="14sp"
-                        app:cornerRadius="10dp" />
-                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Botones CRUD -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -302,37 +242,16 @@
             android:paddingEnd="20dp">
 
             <Button
-                android:id="@+id/btnCreate"
+                android:id="@+id/btnRegistrarEntrada"
                 android:layout_width="0dp"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1.1"
                 android:backgroundTint="@color/blue3"
-                android:text="@string/create"
+                android:text="Registrar Ingreso"
                 android:textSize="14sp"
                 app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1.1"
-                android:backgroundTint="@color/blue3"
-                android:text="@string/update"
-                android:textSize="14sp"
-                app:cornerRadius="10dp" />
-
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1.1"
-                android:backgroundTint="@color/blue3"
-                android:text="@string/delete"
-                android:textSize="14sp"
-                app:cornerRadius="10dp" />
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </FrameLayout>

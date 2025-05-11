@@ -42,10 +42,27 @@
             android:name=".FormActivity"
             android:exported="true">
         </activity>
+
         <activity
-            android:name=".MenuActivity"
+            android:name=".RegistroIngresoActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".RegistroSalidaActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".RegistroCeldaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegistroPagoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegistroObservacionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReporteActivity"
+            android:exported="true" />
 
     </application>
 </manifest>

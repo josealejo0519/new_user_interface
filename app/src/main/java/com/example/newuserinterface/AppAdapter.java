@@ -4,63 +4,56 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class AppAdapter extends ArrayAdapter<AppModel> {
+public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
 
-    public AppAdapter(Context context, List<AppModel> apps) {
-        super(context, 0, getData());
-    }
+    private Context context;
+    private List<AppModel> appList;
 
-    // Generar lista (se puede reemplazar con API o DB)
-    private static ArrayList<AppModel> getData() {
-        ArrayList<AppModel> list = new ArrayList<>();
-        list.add(new AppModel(R.drawable.fondo22, "Ducati Adventure", "Enduro", "Explora nuevos caminos con esta bestia del off-road."));
-        list.add(new AppModel(R.drawable.fondo22, "BMW GS 1200", "Dual Sport", "Viaja sin límites con la icónica GS."));
-        list.add(new AppModel(R.drawable.fondo22, "Yamaha Ténéré", "Adventure", "Ligera, potente y lista para el desierto."));
-        return list;
-    }
-
-    // ViewHolder para optimizar el rendimiento
-    static class ViewHolder {
-        ImageView image;
-        TextView textName;
-        TextView textRights;
-        TextView textSummary;
+    public AppAdapter(Context context, List<AppModel> appList) {
+        this.context = context;
+        this.appList = appList;
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        AppModel app = getItem(position);
-        ViewHolder holder;
+    public AppAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_app, parent, false);
+        return new ViewHolder(view);
+    }
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_adapter_app, parent, false);
-            holder = new ViewHolder();
-            holder.image = convertView.findViewById(R.id.image);
-            holder.textName = convertView.findViewById(R.id.textName);
-            holder.textRights = convertView.findViewById(R.id.textRights);
-            holder.textSummary = convertView.findViewById(R.id.textSummary);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+    @Override
+    public void onBindViewHolder(@NonNull AppAdapter.ViewHolder holder, int position) {
+        AppModel ingreso = appList.get(position);
+
+        holder.txtPlaca.setText("Placa: " + ingreso.getPlaca());
+        holder.txtTipoVehiculo.setText("Tipo: " + ingreso.getTipoVehiculo());
+        holder.txtFechaIngreso.setText("Ingreso: " + ingreso.getFechaHoraIngreso());
+        holder.txtCelda.setText("Celda: " + ingreso.getCelda());
+    }
+
+    @Override
+    public int getItemCount() {
+        return appList.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView txtPlaca, txtTipoVehiculo, txtFechaIngreso, txtCelda;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtPlaca = itemView.findViewById(R.id.txtPlaca);
+            txtTipoVehiculo = itemView.findViewById(R.id.txtTipoVehiculo);
+            txtFechaIngreso = itemView.findViewById(R.id.txtFechaIngreso);
+            txtCelda = itemView.findViewById(R.id.txtCelda);
         }
-
-        // Asignar datos
-        assert app != null;
-        holder.image.setImageResource(app.getImage());
-        holder.textName.setText(app.getName());
-        holder.textRights.setText(app.getRights());
-        holder.textSummary.setText(app.getSummary());
-
-        return convertView;
     }
 }
+
+

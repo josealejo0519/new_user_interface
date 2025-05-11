@@ -5,12 +5,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnApps, btnCategorias, btnMenu, btnLogout;
+    Button btnEntrada, btnSalida, btnCelda, btnPago, btnObs, btnReporte, btnLogout;
+    RecyclerView recyclerView;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -18,21 +26,113 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnApps = findViewById(R.id.btnApps);
-        btnCategorias = findViewById(R.id.btnCategorias);
-        btnMenu = findViewById(R.id.btnMenu);
-        btnLogout = findViewById(R.id.btnLogout); // Botón de cerrar sesión
+        // Referencias a botones
+        btnEntrada = findViewById(R.id.btnEntrada);
+        btnSalida = findViewById(R.id.btnSalida);
+        btnCelda = findViewById(R.id.btnCelda);
+        btnPago = findViewById(R.id.btnPago);
+        btnObs = findViewById(R.id.btnObs);
+        btnReporte = findViewById(R.id.btnReporte);
+        btnLogout = findViewById(R.id.btnLogout);
 
-        btnApps.setOnClickListener(v -> openMenuActivity("apps"));
-        btnCategorias.setOnClickListener(v -> openMenuActivity("categorias"));
-        btnMenu.setOnClickListener(v -> openMenuActivity("menu"));
+        recyclerView = findViewById(R.id.recyclerViewIngresos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        btnLogout.setOnClickListener(v -> cerrarSesion()); // Acción de cerrar sesión
+        // Acciones de botones
+        btnEntrada.setOnClickListener(v -> openMenuActivity("entrada"));
+        btnSalida.setOnClickListener(v -> openMenuActivity("salida"));
+        btnCelda.setOnClickListener(v -> openMenuActivity("celda"));
+        btnPago.setOnClickListener(v -> openMenuActivity("pago"));
+        btnObs.setOnClickListener(v -> openMenuActivity("obs"));
+        btnReporte.setOnClickListener(v -> openMenuActivity("reporte"));
+        btnLogout.setOnClickListener(v -> cerrarSesion());
+
+        cargarVehiculos();
     }
 
+    private void cargarVehiculos() {
+        List<AppModel> listaApp = new ArrayList<>();
+
+        try {
+            List<Vehiculo> vehiculos = Vehiculo.findWithQuery(
+                    Vehiculo.class,
+                    "SELECT * FROM Vehiculo WHERE fecha_salida = 0 ORDER BY fecha_ingreso DESC LIMIT 10"
+            );
+
+            // Si la tabla aún no existe o está vacía, insertamos un registro de prueba
+            if (vehiculos == null || vehiculos.isEmpty()) {
+                Vehiculo vehiculoPrueba = new Vehiculo("TEST123", "Automóvil", "Z1", System.currentTimeMillis());
+                vehiculoPrueba.save();
+
+                Toast.makeText(this, "Vehículo de prueba agregado", Toast.LENGTH_SHORT).show();
+
+                vehiculos = Vehiculo.findWithQuery(
+                        Vehiculo.class,
+                        "SELECT * FROM Vehiculo WHERE fecha_salida = 0 ORDER BY fecha_ingreso DESC LIMIT 10"
+                );
+            }
+
+            for (Vehiculo v : vehiculos) {
+                if (v.getFechaIngreso() > 0) {
+                    String fechaFormateada = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
+                            .format(new java.util.Date(v.getFechaIngreso()));
+
+                    listaApp.add(new AppModel(
+                            v.getPlaca(),
+                            v.getTipoVehiculo(),
+                            fechaFormateada,
+                            v.getCelda()
+                    ));
+                }
+            }
+
+            if (listaApp.isEmpty()) {
+                Toast.makeText(this, "No hay vehículos activos", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+
+        AppAdapter adapter = new AppAdapter(this, listaApp);
+        recyclerView.setAdapter(adapter);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarVehiculos();
+    }
+
+
     private void openMenuActivity(String value) {
-        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-        intent.putExtra("extra", value);
+        Intent intent;
+
+        switch (value) {
+            case "entrada":
+                intent = new Intent(MainActivity.this, RegistroIngresoActivity.class);
+                break;
+            case "salida":
+                intent = new Intent(MainActivity.this, RegistroSalidaActivity.class);
+                break;
+            case "celda":
+                intent = new Intent(MainActivity.this, RegistroCeldaActivity.class);
+                break;
+            case "pago":
+                intent = new Intent(MainActivity.this, RegistroPagoActivity.class);
+                break;
+            case "obs":
+                intent = new Intent(MainActivity.this, RegistroObservacionActivity.class);
+                break;
+            case "reporte":
+                intent = new Intent(MainActivity.this, ReporteActivity.class);
+                break;
+            default:
+                return;
+        }
+
         startActivity(intent);
     }
 
@@ -40,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("is_logged_in", false);
+        editor.remove("correo");
+        editor.remove("rol");
         editor.apply();
 
         Intent intent = new Intent(MainActivity.this, LogInActivity.class);

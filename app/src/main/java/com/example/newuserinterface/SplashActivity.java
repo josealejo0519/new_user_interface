@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
-    private static final int TIEMPO_CARGA = 5000; // 5 segundos
+    private static final int TIEMPO_CARGA = 3000; // 3 segundos
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

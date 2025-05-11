@@ -52,6 +52,7 @@ public class LogInActivity extends AppCompatActivity {
             if (foundUser.getPassword().equals(pass)) {
                 Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show();
 
+
                 // Guardar sesión
                 SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
@@ -66,3 +67,4 @@ public class LogInActivity extends AppCompatActivity {
         }
     }
 }
+

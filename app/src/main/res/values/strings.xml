@@ -27,4 +27,17 @@
     <string name="categor_a">Categoría</string>
     <string name="nombre_app">Nombre App</string>
     <string name="t_tulo_del_men">Título del Menú</string>
+    <string name="app_logo">Logo del parqueadero</string>
+    <string name="olvidaste_tu_contrase_a">Olvidaste tu contraseña?</string>
+    <string name="pass">********</string>
+    <string name="log_out">Salir</string>
+    <string name="salir">Salir</string>
+    <string name="salida">Salida</string>
+    <string name="reportes">Reportes</string>
+    <string name="autos_colombia">Autos Colombia</string>
+    <string name="pagos">Pagos</string>
+    <string name="observaciones">Observaciones</string>
+    <string name="celda">Celda</string>
+    <string name="entrada">Entrada</string>
+
 </resources>
