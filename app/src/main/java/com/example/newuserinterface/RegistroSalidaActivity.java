@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class RegistroSalidaActivity extends AppCompatActivity {
@@ -39,13 +40,18 @@ public class RegistroSalidaActivity extends AppCompatActivity {
                 vehiculoEncontrado.setFechaSalida(salida);
                 vehiculoEncontrado.save();
 
-                long tiempoMs = salida - vehiculoEncontrado.getFechaIngreso();
-                long minutos = TimeUnit.MILLISECONDS.toMinutes(tiempoMs);
+                long ingreso = vehiculoEncontrado.getFechaIngreso();
+                long diferenciaMs = salida - ingreso;
+                long minutos = TimeUnit.MILLISECONDS.toMinutes(diferenciaMs);
+                long horas = minutos / 60;
+                long minutosRestantes = minutos % 60;
 
-                String fechaSalida = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(new Date(salida));
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+                sdf.setTimeZone(TimeZone.getTimeZone("America/Bogota"));
+                String fechaSalida = sdf.format(new Date(salida));
 
                 Toast.makeText(this, "Salida registrada.\nHora: " + fechaSalida +
-                        "\nTiempo total: " + minutos + " minutos.", Toast.LENGTH_LONG).show();
+                        "\nTiempo total: " + horas + "h " + minutosRestantes + "m.", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -67,9 +73,9 @@ public class RegistroSalidaActivity extends AppCompatActivity {
             vehiculoEncontrado = resultados.get(0);
 
             long ingreso = vehiculoEncontrado.getFechaIngreso();
-            long ahora = System.currentTimeMillis();
-            long diferenciaMs = ahora - ingreso;
+            long salida = System.currentTimeMillis();
 
+            long diferenciaMs = salida - ingreso;
             long minutos = TimeUnit.MILLISECONDS.toMinutes(diferenciaMs);
             long horas = minutos / 60;
             long minutosRestantes = minutos % 60;
@@ -78,10 +84,14 @@ public class RegistroSalidaActivity extends AppCompatActivity {
                     ? horas + "h " + minutosRestantes + " min"
                     : minutos + " min";
 
+            int tarifaHora = 500;
+            int valorPagar = (int) Math.max(1, Math.ceil((double) minutos / 60)) * tarifaHora;
+
             txtResumen.setText("Placa: " + vehiculoEncontrado.getPlaca() +
                     "\nTipo: " + vehiculoEncontrado.getTipoVehiculo() +
                     "\nCelda: " + vehiculoEncontrado.getCelda() +
-                    "\nTiempo transcurrido: " + tiempoTexto);
+                    "\nTiempo transcurrido: " + tiempoTexto +
+                    "\nValor a pagar: $" + valorPagar);
         }
     }
 }

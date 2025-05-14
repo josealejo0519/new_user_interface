@@ -2,7 +2,7 @@ package com.example.newuserinterface;
 
 import com.orm.SugarRecord;
 
-public class Vehiculo extends SugarRecord {
+public class Vehiculo extends SugarRecord<Vehiculo> {
 
     private String placa;
     private String tipoVehiculo;

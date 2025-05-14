@@ -5,19 +5,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnEntrada, btnSalida, btnCelda, btnPago, btnObs, btnReporte, btnLogout;
+    Button btnEntrada, btnSalida, btnCelda, btnCliente, btnReporte, btnLogout;
     RecyclerView recyclerView;
 
     @SuppressLint("MissingInflatedId")
@@ -26,24 +29,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Referencias a botones
         btnEntrada = findViewById(R.id.btnEntrada);
         btnSalida = findViewById(R.id.btnSalida);
         btnCelda = findViewById(R.id.btnCelda);
-        btnPago = findViewById(R.id.btnPago);
-        btnObs = findViewById(R.id.btnObs);
+        btnCliente = findViewById(R.id.btnCliente);
         btnReporte = findViewById(R.id.btnReporte);
         btnLogout = findViewById(R.id.btnLogout);
 
         recyclerView = findViewById(R.id.recyclerViewIngresos);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        // Acciones de botones
         btnEntrada.setOnClickListener(v -> openMenuActivity("entrada"));
         btnSalida.setOnClickListener(v -> openMenuActivity("salida"));
         btnCelda.setOnClickListener(v -> openMenuActivity("celda"));
-        btnPago.setOnClickListener(v -> openMenuActivity("pago"));
-        btnObs.setOnClickListener(v -> openMenuActivity("obs"));
+        btnCliente.setOnClickListener(v -> openMenuActivity("cliente"));
         btnReporte.setOnClickListener(v -> openMenuActivity("reporte"));
         btnLogout.setOnClickListener(v -> cerrarSesion());
 
@@ -56,27 +55,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             List<Vehiculo> vehiculos = Vehiculo.findWithQuery(
                     Vehiculo.class,
-                    "SELECT * FROM Vehiculo WHERE fecha_salida = 0 ORDER BY fecha_ingreso DESC LIMIT 10"
+                    "SELECT * FROM vehiculo WHERE fecha_salida = 0 ORDER BY fecha_ingreso DESC LIMIT 10"
             );
 
-            // Si la tabla aún no existe o está vacía, insertamos un registro de prueba
-            if (vehiculos == null || vehiculos.isEmpty()) {
-                Vehiculo vehiculoPrueba = new Vehiculo("TEST123", "Automóvil", "Z1", System.currentTimeMillis());
-                vehiculoPrueba.save();
-
-                Toast.makeText(this, "Vehículo de prueba agregado", Toast.LENGTH_SHORT).show();
-
-                vehiculos = Vehiculo.findWithQuery(
-                        Vehiculo.class,
-                        "SELECT * FROM Vehiculo WHERE fecha_salida = 0 ORDER BY fecha_ingreso DESC LIMIT 10"
-                );
-            }
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+            formato.setTimeZone(TimeZone.getTimeZone("America/Bogota"));
 
             for (Vehiculo v : vehiculos) {
                 if (v.getFechaIngreso() > 0) {
-                    String fechaFormateada = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
-                            .format(new java.util.Date(v.getFechaIngreso()));
-
+                    String fechaFormateada = formato.format(new Date(v.getFechaIngreso()));
                     listaApp.add(new AppModel(
                             v.getPlaca(),
                             v.getTipoVehiculo(),
@@ -99,13 +86,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
         cargarVehiculos();
     }
-
 
     private void openMenuActivity(String value) {
         Intent intent;
@@ -120,11 +105,8 @@ public class MainActivity extends AppCompatActivity {
             case "celda":
                 intent = new Intent(MainActivity.this, RegistroCeldaActivity.class);
                 break;
-            case "pago":
-                intent = new Intent(MainActivity.this, RegistroPagoActivity.class);
-                break;
-            case "obs":
-                intent = new Intent(MainActivity.this, RegistroObservacionActivity.class);
+            case "cliente":
+                intent = new Intent(MainActivity.this, RegistroClienteActivity.class);
                 break;
             case "reporte":
                 intent = new Intent(MainActivity.this, ReporteActivity.class);
@@ -150,3 +132,4 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 }
+

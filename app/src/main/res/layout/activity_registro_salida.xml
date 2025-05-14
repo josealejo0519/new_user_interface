@@ -144,6 +144,29 @@
             android:paddingEnd="20dp">
 
             <Button
+                android:id="@+id/btnPago"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pagos"
+                android:backgroundTint="@color/blue3"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:textColor="@android:color/white"
+                app:cornerRadius="10dp"/>
+
+            <Button
+                android:id="@+id/btnObs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/observaciones"
+                android:backgroundTint="@color/blue3"
+                android:layout_marginStart="4dp"
+                android:textColor="@android:color/white"
+                app:cornerRadius="10dp"/>
+
+            <Button
                 android:id="@+id/btnConfirmarSalida"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

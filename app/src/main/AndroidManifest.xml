@@ -63,6 +63,10 @@
         <activity
             android:name=".ReporteActivity"
             android:exported="true" />
+        <activity
+            android:name=".RegistroClienteActivity"
+            android:exported="true" />
+
 
     </application>
 </manifest>
