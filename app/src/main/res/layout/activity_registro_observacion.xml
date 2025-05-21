@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormActivity">
+    tools:context=".RegistroObservacionActivity">
 
     <!-- Fondo difuminado -->
     <ImageView
@@ -58,7 +58,6 @@
 
                 <!-- Título -->
                 <TextView
-                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -67,6 +66,48 @@
                     android:textColor="@color/blue3"
                     android:textSize="28sp"
                     android:textStyle="bold" />
+
+                <!-- Campo placa -->
+                <EditText
+                    android:id="@+id/edtPlacaObs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/custon_edit_text"
+                    android:hint="Placa del vehículo"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/cardview_dark_background"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+                <!-- Campo descripción -->
+                <EditText
+                    android:id="@+id/edtDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/custon_edit_text"
+                    android:hint="Descripción de la observación"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/cardview_dark_background"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+                <!-- Botón Guardar -->
+                <Button
+                    android:id="@+id/btnGuardarObs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Guardar Observación"
+                    android:backgroundTint="@color/blue3"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:minHeight="48dp"
+                    app:cornerRadius="10dp" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

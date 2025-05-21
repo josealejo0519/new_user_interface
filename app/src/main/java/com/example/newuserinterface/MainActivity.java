@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, RegistroClienteActivity.class);
                 break;
             case "reporte":
-                intent = new Intent(MainActivity.this, ReporteActivity.class);
+                intent = new Intent(MainActivity.this, ReportesActivity.class);
                 break;
             default:
                 return;

@@ -1,5 +1,6 @@
 package com.example.newuserinterface;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class RegistroSalidaActivity extends AppCompatActivity {
 
     private EditText edtPlacaBuscar;
-    private Button btnBuscar, btnConfirmarSalida;
+    private Button btnBuscar, btnConfirmarSalida, btnPago, btnObs;
     private TextView txtResumen;
     private Vehiculo vehiculoEncontrado;
 
@@ -30,31 +31,45 @@ public class RegistroSalidaActivity extends AppCompatActivity {
         edtPlacaBuscar = findViewById(R.id.edtPlacaBuscar);
         btnBuscar = findViewById(R.id.btnBuscar);
         btnConfirmarSalida = findViewById(R.id.btnConfirmarSalida);
+        btnPago = findViewById(R.id.btnPago);
+        btnObs = findViewById(R.id.btnObs);
         txtResumen = findViewById(R.id.txtResumen);
 
         btnBuscar.setOnClickListener(v -> buscarVehiculo());
 
         btnConfirmarSalida.setOnClickListener(v -> {
-            if (vehiculoEncontrado != null) {
-                long salida = System.currentTimeMillis();
-                vehiculoEncontrado.setFechaSalida(salida);
-                vehiculoEncontrado.save();
-
-                long ingreso = vehiculoEncontrado.getFechaIngreso();
-                long diferenciaMs = salida - ingreso;
-                long minutos = TimeUnit.MILLISECONDS.toMinutes(diferenciaMs);
-                long horas = minutos / 60;
-                long minutosRestantes = minutos % 60;
-
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-                sdf.setTimeZone(TimeZone.getTimeZone("America/Bogota"));
-                String fechaSalida = sdf.format(new Date(salida));
-
-                Toast.makeText(this, "Salida registrada.\nHora: " + fechaSalida +
-                        "\nTiempo total: " + horas + "h " + minutosRestantes + "m.", Toast.LENGTH_LONG).show();
-                finish();
+            if (vehiculoEncontrado == null) {
+                String placa = edtPlacaBuscar.getText().toString().trim();
+                if (placa.isEmpty()) {
+                    Toast.makeText(this, "Complete los datos o ingrese un número de placa", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(this, "Debe buscar un vehículo válido antes de registrar la salida", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            long salida = System.currentTimeMillis();
+            vehiculoEncontrado.setFechaSalida(salida);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm", Locale.getDefault());
+            sdf.setTimeZone(TimeZone.getTimeZone("America/Bogota"));
+            vehiculoEncontrado.setFechaSalidaTexto(sdf.format(new Date(salida)));
+            vehiculoEncontrado.save();
+
+            long ingreso = vehiculoEncontrado.getFechaIngreso();
+            long diferenciaMs = salida - ingreso;
+            long minutos = TimeUnit.MILLISECONDS.toMinutes(diferenciaMs);
+            long horas = minutos / 60;
+            long minutosRestantes = minutos % 60;
+
+            String fechaSalida = sdf.format(new Date(salida));
+
+            Toast.makeText(this, "Salida registrada.\nHora: " + fechaSalida +
+                    "\nTiempo total: " + horas + "h " + minutosRestantes + "m.", Toast.LENGTH_LONG).show();
+            finish();
         });
+
+        btnPago.setOnClickListener(v -> openMenuActivity("pago"));
+        btnObs.setOnClickListener(v -> openMenuActivity("obs"));
     }
 
     private void buscarVehiculo() {
@@ -94,6 +109,28 @@ public class RegistroSalidaActivity extends AppCompatActivity {
                     "\nValor a pagar: $" + valorPagar);
         }
     }
+
+    private void openMenuActivity(String value) {
+        Intent intent;
+
+        switch (value) {
+            case "pago":
+                intent = new Intent(RegistroSalidaActivity.this, RegistroPagoActivity.class);
+                break;
+            case "obs":
+                intent = new Intent(RegistroSalidaActivity.this, RegistroObservacionActivity.class);
+                break;
+            default:
+                return;
+        }
+
+        startActivity(intent);
+    }
 }
+
+
+
+
+
 
 

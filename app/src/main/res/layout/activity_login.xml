@@ -63,7 +63,7 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="@string/log_in"
+                    android:text="Usuario"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="34sp"
@@ -97,7 +97,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:layout_marginStart="12dp"
-                            android:hint="email"
+                            android:hint="Correo"
                             android:inputType="textEmailAddress"
                             android:textColor="@color/black"
                             android:textColorHint="@color/cardview_dark_background"
@@ -170,7 +170,7 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="2dp"
                     android:background="@android:color/transparent"
-                    android:text="@string/olvidaste_tu_contrase_a"
+                    android:text="Crea tu cuenta!"
                     android:textColor="@color/black"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -182,7 +182,7 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="30dp"
                     android:backgroundTint="@color/blue3"
-                    android:text="@string/sing_in"
+                    android:text="Entrar"
                     android:textSize="22sp"
                     app:cornerRadius="10dp" />
 

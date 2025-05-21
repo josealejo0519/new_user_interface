@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormActivity">
+    tools:context=".RegistroCeldaActivity">
 
     <!-- Fondo difuminado -->
     <ImageView
@@ -21,54 +21,89 @@
         android:background="#99000000" />
 
     <!-- Contenedor principal -->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/main"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
-        <!-- CardView -->
+        <!-- CardView con contenido -->
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             app:cardBackgroundColor="#CCFFFFFF"
             app:cardCornerRadius="30dp"
             app:cardElevation="10dp">
 
+
             <LinearLayout
-                android:layout_width="400dp"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:padding="24dp"
+                android:gravity="center_horizontal">
 
                 <!-- Logo -->
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/logoImage"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/parking21"
                     android:contentDescription="@string/app_logo"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/parking21"
                     app:shapeAppearanceOverlay="@style/CircularImageViewStyle" />
 
                 <!-- Título -->
                 <TextView
-                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Validar Disponibilidad de Celda"
+                    android:textAlignment="center"
+                    android:textColor="#003B3B"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Leyenda -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#69A3AB"
+                        android:text="Disponible"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        app:cornerRadius="20dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#005F5F"
+                        android:text="Ocupada"
+                        android:textColor="#FFFFFF"
+                        android:padding="8dp"
+                        app:cornerRadius="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Contenedor para las celdas en columnas -->
+                <LinearLayout
+                    android:id="@+id/containerCeldas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Consultar Celdas"
-                    android:textAlignment="center"
-                    android:textColor="@color/blue3"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:gravity="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 </FrameLayout>
+
+
+

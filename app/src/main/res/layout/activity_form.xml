@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/user_registration"
+                    android:text="Usuarios del Sistema"
                     android:textAlignment="center"
                     android:textColor="@color/blue3"
                     android:textSize="28sp"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/name"
+                    android:text="Nombre"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -102,7 +102,6 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="@string/name"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/cardview_dark_background" />
@@ -114,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/last_name"
+                    android:text="Apellidos"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -142,7 +141,6 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="@string/last_name"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/cardview_dark_background" />
@@ -154,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="@string/e_mail"
+                    android:text="Correo"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -182,7 +180,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:hint="@string/e_mail"
+                        android:hint="(@)correo.com.co"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/black"
                         android:textColorHint="@color/cardview_dark_background" />
@@ -194,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="4dp"
-                    android:text="Password"
+                    android:text="Contraseña"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -271,7 +269,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
-                            android:hint="@string/user"
+                            android:hint="correo"
                             android:inputType="text"
                             android:textColor="@color/black"
                             android:textColorHint="@color/cardview_dark_background" />
@@ -284,7 +282,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/blue3"
-                        android:text="@string/search"
+                        android:text="Buscar"
                         android:textSize="14sp"
                         app:cornerRadius="10dp" />
                 </LinearLayout>
@@ -308,7 +306,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1.1"
                 android:backgroundTint="@color/blue3"
-                android:text="@string/create"
+                android:text="Crear"
                 android:textSize="14sp"
                 app:cornerRadius="10dp" />
 
@@ -319,7 +317,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1.1"
                 android:backgroundTint="@color/blue3"
-                android:text="@string/update"
+                android:text="Actualizar"
                 android:textSize="14sp"
                 app:cornerRadius="10dp" />
 
@@ -330,7 +328,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1.1"
                 android:backgroundTint="@color/blue3"
-                android:text="@string/delete"
+                android:text="Eliminar"
                 android:textSize="14sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>

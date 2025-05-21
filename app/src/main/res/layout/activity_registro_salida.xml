@@ -20,165 +20,122 @@
         android:layout_height="match_parent"
         android:background="#99000000" />
 
-    <!-- Contenedor principal -->
+    <!-- Contenedor principal centrado -->
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:gravity="center"
-        android:orientation="vertical">
+        android:padding="16dp">
 
-        <!-- CardView -->
+        <!-- CardView centrado -->
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            app:cardBackgroundColor="#CCFFFFFF"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
             app:cardCornerRadius="30dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            app:cardBackgroundColor="#CCFFFFFF">
 
             <LinearLayout
                 android:layout_width="400dp"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="24dp">
 
                 <!-- Logo -->
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/logoImage"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/parking21"
                     android:contentDescription="@string/app_logo"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/parking21"
                     app:shapeAppearanceOverlay="@style/CircularImageViewStyle" />
 
-                <!-- Título -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Salida"
+                    android:text="Registro de Salida"
                     android:textAlignment="center"
                     android:textColor="@color/blue3"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
 
-                <!-- Campo Placa -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginBottom="4dp"
-                    android:text="Placa"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
+                <EditText
+                    android:id="@+id/edtPlacaBuscar"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_height="45dp"
+                    android:hint="Ingrese placa"
                     android:background="@drawable/custon_edit_text"
-                    android:gravity="start"
-                    android:orientation="horizontal"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp">
+                    android:paddingStart="12dp"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:layout_marginBottom="12dp" />
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/placa" />
-
-                    <EditText
-                        android:id="@+id/edtPlacaBuscar"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:hint="Número de placa"
-                        android:inputType="text"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/cardview_dark_background" />
-                </LinearLayout>
-
-                <!-- Botón Buscar -->
                 <Button
                     android:id="@+id/btnBuscar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Buscar Vehículo"
-                    android:layout_marginBottom="10dp"
                     android:backgroundTint="@color/blue3"
                     android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    app:cornerRadius="10dp"/>
+                    android:layout_marginBottom="12dp" />
 
-                <!-- Resumen Vehículo -->
                 <TextView
                     android:id="@+id/txtResumen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Resumen del vehículo aparecerá aquí"
+                    android:text="Resumen del vehículo aparecerá aquí..."
                     android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
+                    android:padding="8dp"
+                    android:background="#e6e6e6"
+                    android:textSize="16sp"
+                    android:minHeight="100dp"
+                    android:layout_marginBottom="16dp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp">
+
+                    <Button
+                        android:id="@+id/btnObs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Observaciones"
+                        android:backgroundTint="@color/blue3"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/btnPago"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pago"
+                        android:backgroundTint="@color/blue3"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnConfirmarSalida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmar Salida"
+                    android:backgroundTint="@color/blue3"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <!-- Botón Confirmar Salida -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
-
-            <Button
-                android:id="@+id/btnPago"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/pagos"
-                android:backgroundTint="@color/blue3"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:textColor="@android:color/white"
-                app:cornerRadius="10dp"/>
-
-            <Button
-                android:id="@+id/btnObs"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/observaciones"
-                android:backgroundTint="@color/blue3"
-                android:layout_marginStart="4dp"
-                android:textColor="@android:color/white"
-                app:cornerRadius="10dp"/>
-
-            <Button
-                android:id="@+id/btnConfirmarSalida"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1.1"
-                android:minHeight="48dp"
-                android:backgroundTint="@color/blue3"
-                android:text="Registrar Salida"
-                android:textSize="14sp"
-                app:cornerRadius="10dp" />
-
-        </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </FrameLayout>
+
+
 

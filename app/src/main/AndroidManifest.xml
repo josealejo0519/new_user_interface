@@ -61,7 +61,7 @@
             android:name=".RegistroObservacionActivity"
             android:exported="true" />
         <activity
-            android:name=".ReporteActivity"
+            android:name=".ReportesActivity"
             android:exported="true" />
         <activity
             android:name=".RegistroClienteActivity"
